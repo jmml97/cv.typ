@@ -152,7 +152,7 @@
                 // Line 1: Institution and Location
                 *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
                 // Line 2: Degree and Date Range
-                #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
+                #text(style: "italic")[#edu.studyType #strings.in #edu.area] #h(1fr)
                 #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
                 // Bullet points
                 #if edu.honors.len() > 0 [

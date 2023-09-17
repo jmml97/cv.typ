@@ -28,13 +28,13 @@ work:
     highlights:
       - Trabajando en múltiples microservicios para la web xTraders.
       - He codiseñado e implementado una API REST para nuestros clientes.
-      - Trabajando principalmente en C++ y Golang. Ocasionalmente haciando algunas tareas en Python y SQL.
+      - Trabajando principalmente en C++ y Golang. Ocasionalmente haciendo algunas tareas en Python y SQL.
 
 education:
   - institution: Universidad de Granada
     url: https://ugr.es/
     area: Informática
-    studyType: Grado en
+    studyType: Grado
     startDate: 2015-09-01
     endDate: 2020-07-15
     location: Granada
@@ -46,7 +46,7 @@ education:
   - institution: Universidad de Granada
     url: https://ugr.es/
     area: Matemáticas
-    studyType: Grado en
+    studyType: Grado
     startDate: 2015-09-01
     endDate: 2020-07-15
     location: Granada
@@ -74,7 +74,7 @@ projects:
     startDate: 2019-10-01
     endDate: 2020-07-01
     highlights:
-      - El objetivo principal del proyecto era estdiar e implementar en SageMath el algoritmo Peterson-Gorenstein-Zierler algorithm para códigos cíclicos sesgados.
+      - El objetivo principal del proyecto era estudiar e implementar en SageMath el algoritmo Peterson-Gorenstein-Zierler para códigos cíclicos sesgados.
       - Calificado con Matrícula de Honor. 
 
 awards: []
