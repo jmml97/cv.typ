@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=cv.typ.schema.json
+
+personal:
+  name: José María Martín Luque
+  email: hi@jmml.me
+  phone: ""
+  url: https://jmml.me
+  location:
+    city: ""
+    region: ""
+    postalCode: 1234
+    country: ""
+  profiles:
+    - network: LinkedIn
+      username: José María Martín
+      url: https://linkedin.com/in/jmml97
+    - network: GitHub
+      username: jmml97
+      url: https://github.com/jmml97
+
+work:
+  - organization: Meteologica
+    position: Desarrollador de backend en C++/Golang
+    url: https://meteologica.com
+    location: Madrid
+    startDate: 2020-11-03
+    endDate: Actualidad
+    highlights:
+      - Trabajando en múltiples microservicios para la web xTraders.
+      - He codiseñado e implementado una API REST para nuestros clientes.
+      - Trabajando principalmente en C++ y Golang. Ocasionalmente haciando algunas tareas en Python y SQL.
+
+education:
+  - institution: Universidad de Granada
+    url: https://ugr.es/
+    area: Informática
+    studyType: Grado en
+    startDate: 2015-09-01
+    endDate: 2020-07-15
+    location: Granada
+    honors: []
+    courses:
+      - Desarrollo Web
+      - Arquitectura de Sistemas
+    highlights: []
+  - institution: Universidad de Granada
+    url: https://ugr.es/
+    area: Matemáticas
+    studyType: Grado en
+    startDate: 2015-09-01
+    endDate: 2020-07-15
+    location: Granada
+    honors: []
+    courses:
+      - Estadística Multivariante
+      - Estadística Computacional
+    highlights: []
+
+affiliations:
+  - organization: Delegación de Estudiantes de la Universidad de Granada
+    position: Director de comunicación
+    location: Granada
+    url: https://dge.ugr.es
+    startDate: 2018-04-01
+    endDate: 2019-04-01
+    highlights:
+      - Fui responsable de diseñar e implementar campañas de comunicación dirigidas a los 47\u{2007}000 estudiantes de la universidad.
+      - También estuve al frente de las redes sociales y las relaciones con la prensa local.
+
+projects:
+  - name: "Algoritmo de Peterson-Gorenstein-Zierler para códigos cíclicos sesgados"
+    url: https://github.com/jmml97/tfg/
+    affiliation: Trabajo de Fin de Grado
+    startDate: 2019-10-01
+    endDate: 2020-07-01
+    highlights:
+      - El objetivo principal del proyecto era estdiar e implementar en SageMath el algoritmo Peterson-Gorenstein-Zierler algorithm para códigos cíclicos sesgados.
+      - Calificado con Matrícula de Honor. 
+
+awards: []
+
+certificates: []
+
+publications: []
+
+languages:
+  - language: Español
+    fluency: Nativo
+  - language: Inglés
+    fluency: Fluido
+  - language: Francés
+    fluency: Básico
+
+skills:
+  - category: Soft Skills
+    skills:
+      - Hablar en público
+      - Comunicación
+      - Pensamiento crítico
+      - Escritura técnica
+  - category: Programación
+    skills:
+      - C
+      - C++
+      - Golang
+      - Python
+      - SQL
+      - PostgreSQL
+      - HTML
+      - CSS
+      - Javascript
+      - PHP
+  - category: Herramientas
+    skills:
+      - LaTeX
+      - Typst
+      - Git
+      - Docker
+
+interests: null
+
+references: []

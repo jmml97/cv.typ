@@ -105,7 +105,7 @@
                     },
                     "endDate": {
                         "type": "string",
-                        "format": "date"
+                        "format": "string"
                     },
                     "highlights": {
                         "type": [
@@ -409,7 +409,10 @@
             }
         },
         "interests": {
-            "type": "array",
+            "type": [
+                "array",
+                "null"
+            ],
             "items": {
                 "type": "string"
             }

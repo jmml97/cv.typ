@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=cv.typ.schema.json
+
+personal:
+  name: José María Martín Luque
+  email: hi@jmml.me
+  phone: ""
+  url: https://jmml.me
+  location:
+    city: ""
+    region: ""
+    postalCode: 1234
+    country: ""
+  profiles:
+    - network: LinkedIn
+      username: José María Martín
+      url: https://linkedin.com/in/jmml97
+    - network: GitHub
+      username: jmml97
+      url: https://github.com/jmml97
+
+work:
+  - organization: Meteologica
+    position: C++/Golang Backend Developer
+    url: https://meteologica.com
+    location: Madrid, Spain
+    startDate: 2020-11-03
+    endDate: Present
+    highlights:
+      - Developing a range of microservices for the xTraders website.
+      - Co-designed and implemented a REST API for our clients.
+      - Mainly working in C++ and Golang. Ocasionally doing some work in Python and SQL.
+
+education:
+  - institution: Universidad de Granada
+    url: https://ugr.es/
+    area: Computer Science
+    studyType: Bachelor's Degree
+    startDate: 2015-09-01
+    endDate: 2020-07-15
+    location: Granada, Spain
+    honors: []
+    courses:
+      - Web Development
+      - Advanced Operating Systems
+    highlights: []
+  - institution: Universidad de Granada
+    url: https://ugr.es/
+    area: Mathematics
+    studyType: Bachelor's Degree
+    startDate: 2015-09-01
+    endDate: 2020-07-15
+    location: Granada, Spain
+    honors: []
+    courses:
+      - Multivariate Statistics
+      - Computational Statistics
+    highlights: []
+
+affiliations:
+  - organization: Student Council of the University of Granada
+    position: Press Officer
+    location: Granada, Spain
+    url: https://dge.ugr.es
+    startDate: 2018-04-01
+    endDate: 2019-04-01
+    highlights:
+      - Responsible for designing and setting up communication campaigns reaching all 47\u{2007}000 students. 
+      - Also in charge of social networks and relations with local media.
+
+projects:
+  - name: "Peterson-Gorenstein-Zierler's Algorithm for skew cyclic codes"
+    url: https://github.com/jmml97/tfg/
+    affiliation: Bachelor's Thesis
+    startDate: 2019-10-01
+    endDate: 2020-07-01
+    highlights:
+      - The main goal of the project was to study and implement in SageMath the Peterson-Gorenstein-Zierler algorithm for skew cyclic codes.
+      - Awarded maximum mark with honors. 
+
+awards: []
+
+certificates: []
+
+publications: []
+
+languages:
+  - language: Spanish
+    fluency: Native speaker
+  - language: English
+    fluency: Fluent
+  - language: French
+    fluency: Basic
+
+skills:
+  - category: Soft Skills
+    skills:
+      - Public Speaking
+      - Communication
+      - Critical Thinking
+      - Technical Writing
+  - category: Programming
+    skills:
+      - C
+      - C++
+      - Golang
+      - Python
+      - SQL
+      - PostgreSQL
+      - HTML
+      - CSS
+      - Javascript
+      - PHP
+  - category: Tools
+    skills:
+      - LaTeX
+      - Typst
+      - Git
+      - Docker
+
+interests: null
+
+references: []

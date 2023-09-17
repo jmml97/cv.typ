@@ -1,4 +1,5 @@
 #import "utils.typ"
+#import "@preview/metro:0.1.0": *
 
 // Load CV Data from YAML
 //#let info = yaml("cv.typ.yml")
@@ -12,20 +13,36 @@
 //#let showAddress = true // true/false Show address in contact info
 //#let showNumber = true  // true/false Show phone number in contact info
 
+
+#let i18n = yaml("i18n.yml")
+
+#let setstrings(uservars) = {
+    let strings
+
+    if uservars.lang == "en" {
+        strings = i18n.en
+    } else if uservars.lang == "es" {
+        strings = i18n.es
+    }
+
+    strings
+}
+
 // set rules
 #let setrules(uservars, doc) = {
     set page(
-        paper: "us-letter", // a4, us-letter
+        paper: "a4", // a4, us-letter
         numbering: "1 / 1",
         number-align: center, // left, center, right
-        margin: 1.25cm, // 1.25cm, 1.87cm, 2.5cm
+        margin: 2cm, // 1.25cm, 1.87cm, 2.5cm
     )
 
     // Set Text settings
     set text(
         font: uservars.bodyfont,
         size: uservars.fontsize,
-        hyphenate: false,
+        hyphenate: true,
+        lang: uservars.lang
     )
 
     // Set Paragraph settings
@@ -45,7 +62,7 @@
     ): it => block(width: 100%)[
         #set align(left)
         #set text(font: uservars.headingfont, size: 1em, weight: "bold")
-        #upper(it.body)
+        #it.body
         #v(-0.75em) #line(length: 100%, stroke: 1pt + black) // Draw a line
     ]
 
@@ -54,7 +71,7 @@
         level: 1,
     ): it => block(width: 100%)[
         #set text(font: uservars.headingfont, size: 1.5em, weight: "bold")
-        #upper(it.body)
+        #it.body
         #v(2pt)
     ]
 
@@ -121,9 +138,9 @@
 }
 
 // Education
-#let cveducation(info) = {
+#let cveducation(info, strings) = {
     if info.education != none [
-        == Education
+        == #strings.education
 
         #for edu in info.education {
             // Parse ISO date strings into datetime objects
@@ -138,8 +155,10 @@
                 #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
                 #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
                 // Bullet points
-                - *Honors*: #edu.honors.join(", ")
-                - *Courses*: #edu.courses.join(", ")
+                #if edu.honors.len() > 0 [
+                    - *Honors*: #edu.honors.join(", ")
+                ]
+                - *#strings.courses*: #edu.courses.join(", ")
                 // Highlights or Description
                 #for hi in edu.highlights [
                     - #eval("[" + hi + "]")
@@ -150,35 +169,53 @@
 }
 
 // Work Experience
-#let cvwork(info) = {
+#let cvwork(info, strings) = {
     if info.work != none [
-        == Work Experience
+        == #strings.work
 
         #for w in info.work {
             // Parse ISO date strings into datetime objects
             let start = utils.strpdate(w.startDate)
-            let end = utils.strpdate(w.endDate)
 
-            // Create a block layout for each education entry
-            block(width: 100%)[
-                // Line 1: Institution and Location
-                *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
-                // Line 2: Degree and Date Range
-                #text(style: "italic")[#w.position] #h(1fr)
-                #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
-                // Highlights or Description
-                #for hi in w.highlights [
-                    - #eval("[" + hi + "]")
+            if w.endDate == strings.present {
+                let end = w.endDate
+
+                // Create a block layout for each education entry
+                block(width: 100%)[
+                    // Line 1: Institution and Location
+                    *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
+                    // Line 2: Degree and Date Range
+                    #text(style: "italic")[#w.position] #h(1fr)
+                    #start.display("[month repr:short]") #start.year() #sym.dash.en #end \
+                    // Highlights or Description
+                    #for hi in w.highlights [
+                        - #eval("[" + hi + "]")
+                    ]
                 ]
-            ]
+            } else {
+                let end = utils.strpdate(w.endDate)
+
+                // Create a block layout for each education entry
+                block(width: 100%)[
+                    // Line 1: Institution and Location
+                    *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
+                    // Line 2: Degree and Date Range
+                    #text(style: "italic")[#w.position] #h(1fr)
+                    #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
+                    // Highlights or Description
+                    #for hi in w.highlights [
+                        - #eval("[" + hi + "]")
+                    ]
+                ]
+            }
         }
     ]
 }
 
 // Leadership and Activities
-#let cvaffiliations(info) = {
+#let cvaffiliations(info, strings) = {
     if info.affiliations != none [
-        == Leadership & Activities
+        == #strings.leadership
 
         #for org in info.affiliations {
             // Parse ISO date strings into datetime objects
@@ -204,9 +241,9 @@
 }
 
 // Projects
-#let cvprojects(info) = {
+#let cvprojects(info, strings) = {
     if info.projects != none [
-        == Projects
+        == #strings.projects
 
         #for project in info.projects {
             // Parse ISO date strings into datetime objects
@@ -229,9 +266,9 @@
 }
 
 // Honors and Awards
-#let cvawards(info) = {
+#let cvawards(info, strings) = {
     if info.awards != none [
-        == Honors & Awards
+        == #strings.awards
 
         #for award in info.awards {
             // Parse ISO date strings into datetime objects
@@ -255,9 +292,9 @@
 }
 
 // Certifications
-#let cvcertificates(info) = {
+#let cvcertificates(info, strings) = {
     if info.certificates != none [
-        == Licenses & Certifications
+        == #strings.licenses
 
         #for cert in info.certificates {
             // Parse ISO date strings into datetime objects
@@ -275,9 +312,9 @@
 }
 
 // Research & Publications
-#let cvpublications(info) = {
+#let cvpublications(info, strings) = {
     if info.publications != none [
-        == Research & Publications
+        #strings.research
 
         #for pub in info.publications {
             // Parse ISO date strings into datetime objects
@@ -295,16 +332,16 @@
 }
 
 // Skills, Languages, and Interests
-#let cvskills(info) = {
+#let cvskills(info, strings) = {
     if (info.languages != none) or (info.skills != none) or (info.interests != none) [
-        == Skills, Languages, Interests
+        == #strings.skills
 
         #if (info.languages != none) [
             #let langs = ()
             #for lang in info.languages {
                 langs.push([#lang.language (#lang.fluency)])
             }
-            - *Languages*: #langs.join(", ")
+            - *#strings.languages*: #langs.join(", ")
         ]
         #if (info.skills != none) [
             #for group in info.skills [
@@ -312,13 +349,13 @@
             ]
         ]
         #if (info.interests != none) [
-            - *Interests*: #info.interests.join(", ")
+            - *#strings.interests*: #info.interests.join(", ")
         ]
     ]
 }
 
 // References
-#let cvreferences(info) = {
+#let cvreferences(info, strings) = {
     if info.references != none [
         == References
 
@@ -333,12 +370,12 @@
 // =====================================================================
 
 // End Note
-#let endnote = {
+#let endnote(strings) = {
     place(
         bottom + right,
         block[
-            #set text(size: 5pt, font: "Consolas", fill: silver)
-            \*This document was last updated on #datetime.today().display("[year]-[month]-[day]") using #strike[LaTeX] #link("https://typst.app")[Typst].
+            #set text(size: 8pt, font: "JetBrains Mono", fill: silver)
+            #strings.updated #datetime.today().display("[year]-[month]-[day]").
         ]
     )
 }
